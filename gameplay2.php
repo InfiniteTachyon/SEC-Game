@@ -111,9 +111,9 @@ function get_letters($numLetters) {
 function do_turn($currentPlayer, $currentPlayerLetters, $currentPlayerScore) {
     if (isset($_POST['dice-button'])) {
         $numLetters = roll_dice();
+        $currentPlayerLetters = array_merge($currentPlayerLetters, get_letters($numLetters));
     }
-    ${"totalLetters" . $player} = array_merge($currentLetters, get_letters($numLetters));
-    $currentPlayerLetters = ${"totalLetters" . $player};
+    
 }
 
 //Actual gameplay
@@ -154,7 +154,7 @@ for ($turnNum=0; $turnNum<NUM_TURNS; $turnNum++) {
     </header>
     <div class="container">
         <div class="player-info">
-            <p class="turn-text">PLAYER <?php echo $turnCounter+1 ?></p>
+            <p class="turn-text">PLAYER <?php echo $currentPlayer+1 ?></p>
         </div>
         <div class="scoreboard">
             <?php foreach($playerArray as $num => $playerName)
