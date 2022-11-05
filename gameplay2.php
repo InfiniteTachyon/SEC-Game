@@ -94,7 +94,8 @@ for ($i=0; $i<$numPlayers; $i++) {
 
 if (isset($_POST['dice-button'])) {
     roll_dice();
-
+    echo "<script>console.log('Hello worlds')</script>";
+}
 
 function roll_dice() {
     $roll = rand(1,12);
