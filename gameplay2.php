@@ -14,11 +14,22 @@ function roll_dice() {
     return $roll;
 }
 
+function get_letters($numLetters) {
+    $letterArray = [];
+    for ($i=0; $i<$numLetters; $i++) {
+        $letter = substr(str_shuffle("ABCDEFGHIJKLMNOPQRSTUVWXYZ"),0,1);
+        $letterArray[] = $letter;
+    }
+    return $letterArray();
+} 
+
+function do_turn($player) {
+}
+
 //Keep track of turns
 $turnCounter = 0;
 for ($turnNum=0; $turnNum<NUM_TURNS; $turnNum++) {
     $numLetters = roll_dice();
-    
 }
 
 ?>
