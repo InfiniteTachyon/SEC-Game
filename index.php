@@ -1,3 +1,7 @@
+<?php
+    
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,11 +25,16 @@
     <div class="container">
         <div class="form-container">
             <p>Select the number of players</p>
-            <form id="player-form" method="POST">
-                <input type="button" class="player-form-button" value="Single Player">
-                <input type="button" class="player-form-button" value="2 Players">
-                <input type="button" class="player-form-button" value="3 Players">
-                <input type="button" class="player-form-button" value="4 Players">
+            <form id="player-form" method="POST" action="/game/SEC-Game/gameplay.php">
+                <input type="radio" class="player-form-button" name="numPlayers" value="Single Player">
+                <label for="Single Player" class="player-form-label">Single Player</label>
+                <input type="radio" class="player-form-button" name="numPlayers" value="2 Players">
+                <label for="2 Players" class="player-form-label">2 Players</label>
+                <input type="radio" class="player-form-button" name="numPlayers" value="3 Players">
+                <label for="3 Players" class="player-form-label">3 Players</label>
+                <input type="radio" class="player-form-button" name="numPlayers" value="4 Players">
+                <label for="4 Players" class="player-form-label">4 Players</label>
+                <input type="submit">
             </form>
         </div>
     </div>
