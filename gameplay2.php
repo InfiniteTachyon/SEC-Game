@@ -84,6 +84,7 @@
 <?php 
 $numPlayers = $_POST['numPlayers'];
 define("NUM_TURNS", (int) $numPlayers*10);
+define("LETTERS", (int) $numPlayers*10);
 
 //Generate variables according to number of players
 for ($i=0; $i<$numPlayers; $i++) {
@@ -93,11 +94,6 @@ for ($i=0; $i<$numPlayers; $i++) {
 }
 
 
-
-function roll_dice() {
-    $roll = rand(1,12);
-    return $roll;
-}
 
 function get_letters($numLetters) {
     $letterArray = [];
@@ -119,14 +115,19 @@ function do_turn($currentPlayer, $currentPlayerLetters, $currentPlayerScore) {
 //Actual gameplay
 $currentPlayer = 0;
 for ($turnNum=0; $turnNum<NUM_TURNS; $turnNum++) {
-    $currentPlayerLetters = ${"totalLetters" . $currentPlayer};
-    $currentPlayerScore = ${"score" . $currentPlayer};
-    do_turn($currentPlayer, $currentPlayerLetters, $currentPlayerScore);
-    if ($currentPlayer == (int) $numPlayers-1) {
-        $currentPlayer = 0;
-    }
-    else {
-        $currentPlayer += 1;
+    $currentPlayerLetters = get_letters(LETTERS);
+    $currentPlayerScore = 0;
+    if (isset($_POST['dice-button'])) {
+        $word = $_POST['player-text'];
+        echo "<p class='word'>" . $word . "</p>"
+        //do the check thing
+        $currentPlayerScore += strlen($word);
+        if ($currentPlayer == (int) $numPlayers-1) {
+            $currentPlayer = 0;
+        }
+        else {
+            $currentPlayer += 1;
+        }
     }
 }
 
@@ -175,7 +176,7 @@ for ($turnNum=0; $turnNum<NUM_TURNS; $turnNum++) {
         </div>
     <form method="POST">
         <div class="button">
-            <button type="button" name="dice-button">Roll Dice</button>
+            <button type="submit" name="submit">Next Player</button>
         </div>
     </form>
     </div>
