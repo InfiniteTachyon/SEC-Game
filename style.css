@@ -1,3 +1,7 @@
+body {
+    text-align: center;
+}
+
 .header-text {
     text-align: center;
     font-family: "Andale Mono", monospace;
@@ -34,3 +38,35 @@
     bottom: 0;
     height: 100%;
 }
+
+.form-container p {
+    border: 2px solid #dadada;
+    border-radius: 7px;
+    
+    
+}
+
+.form-container:focus { 
+    outline: none;
+    border-color: #9ecaed;
+    box-shadow: 0 0 10px #9ecaed;
+}
+
+form {
+    display: inline-block;
+    vertical-align: center;
+    width: 40vw;
+    padding: 48px 64px;
+    border-radius: 16px;
+    background: #ecf0f3;
+    box-shadow:
+        4px 4px 4px 0px #d1d9e6 inset,
+        -4px -4px 4px 0px #ffffff inset;
+}
+
+
+
+input:checked + label{
+    box-shadow: 0 0 0 3px black;
+}
+
