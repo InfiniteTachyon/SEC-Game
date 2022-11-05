@@ -1,13 +1,7 @@
 <?php 
 session_start();
 $numPlayers = $_POST['numPlayers'];
-define("NUM_TURNS", $numPlayers*10)
-
-//WTF IS WRONG WITH THIS???
-function diceRoll() {
-    echo "Hello world";
-    return void;
-}
+define("NUM_TURNS", (int) $numPlayers*10);
 
 //Generate variables according to number of players
 for ($i=0; $i<$numPlayers; $i++) {
@@ -16,9 +10,9 @@ for ($i=0; $i<$numPlayers; $i++) {
 
 //Keep track of turns
 $turnCounter = 0;
-for ($turnNum=0; $turnNum<NUM_TURNS; $turnNum++) {
-    //roll dice
-}
+// for ($turnNum=0; $turnNum<NUM_TURNS; $turnNum++) {
+//     //roll dice
+// }
 
 ?>
 
@@ -45,8 +39,9 @@ for ($turnNum=0; $turnNum<NUM_TURNS; $turnNum++) {
     <div class="container">
         <div class="player-info">
             <p class="turn-text">PLAYER <?php echo $turnCounter+1 ?></p>
-
         </div>
-            </div>
+        <div class="scoreboard">
+        </div>
+    </div>
 
     

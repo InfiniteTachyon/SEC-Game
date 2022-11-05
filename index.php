@@ -25,7 +25,7 @@
     <div class="container">
         <div class="form-container">
             <p>Select the number of players</p>
-            <form id="player-form" method="POST" action="/game/SEC-Game/gameplay.php">
+            <form id="player-form" method="POST" action="/game/SEC-Game/gameplay2.php">
                 <input type="radio" class="player-form-button" name="numPlayers" value="Single Player">
                 <label for="Single Player" class="player-form-label">Single Player</label>
                 <input type="radio" class="player-form-button" name="numPlayers" value="2 Players">
