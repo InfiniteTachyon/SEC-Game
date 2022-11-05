@@ -39,6 +39,11 @@ body {
     height: 100%;
 }
 
+.form-container p {
+    font-family:'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: medium;
+}
 
 form {
     display: inline-block;
@@ -64,5 +69,9 @@ input:checked + label{
 
 .scoreboard {
     color: black;
+}
+
+.letter-display {
+    border-color: 2px solid black;
 }
 
