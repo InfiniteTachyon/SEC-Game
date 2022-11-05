@@ -3,12 +3,12 @@ body {
 }
 
 .header-text {
+    font-size: 50px;
     text-align: center;
     font-family: "Andale Mono", monospace;
 }
 
 #navbar {
-
     list-style: none;
     display: flex;
     flex-direction: row;
@@ -37,6 +37,10 @@ body {
 #navbar a:hover::before {
     bottom: 0;
     height: 100%;
+}
+
+.form-container {
+    padding-top: 50px;
 }
 
 .form-container p {
