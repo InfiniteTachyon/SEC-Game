@@ -1,3 +1,86 @@
+<?php
+        function isRealWord($word) {
+            $curl = curl_init();
+
+            $url = "https://od-api.oxforddictionaries.com/api/v2/entries/en-us/" . $word;
+            curl_setopt_array($curl, [
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_POSTFIELDS => "",
+            CURLOPT_HTTPHEADER => [
+              "app_id: cf7d9dc6",
+              "app_key: 0588f6dc5d86e27c8c0af730c58d136c"
+            ],
+            ]);
+
+            $response = curl_exec($curl);
+            $err = curl_error($curl);
+            $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+            curl_close($curl);
+
+            if ($err) {
+              echo "cURL Error #:" . $err;
+            } else {
+              if ($httpcode == 200) {
+                return 1;
+              } else {
+                return 0; 
+              }
+            }
+
+        }
+?>
+
+
+<?php
+    function generateWord() {
+        $curl = curl_init();
+
+        $url = "https://random-word-api.herokuapp.com/word" ;
+        curl_setopt_array($curl, [
+        CURLOPT_URL => $url,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "GET",
+        CURLOPT_POSTFIELDS => "",
+        ]);
+
+        $response = curl_exec($curl);
+        $response = ltrim($response, '["');
+        $response = rtrim($response, '"]');
+
+        $err = curl_error($curl);
+        $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+        curl_close($curl);
+
+        if ($err) {
+          return "cURL Error #:" . $err;
+        } else {
+          if ($httpcode == 200) {
+
+            return $response;
+          } else {
+            return $httpcode; 
+          }
+        }
+
+    }
+
+
+?>
+
+
+
 <?php 
 session_start();
 $numPlayers = $_POST['numPlayers'];
