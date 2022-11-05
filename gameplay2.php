@@ -92,6 +92,10 @@ for ($i=0; $i<$numPlayers; $i++) {
     ${"totalLetters" . (string) $i} = [];
 }
 
+if (isset($_POST['dice-button'])) {
+    roll_dice();
+
+
 function roll_dice() {
     $roll = rand(1,12);
     return $roll;
@@ -115,8 +119,10 @@ function do_turn($player, $currentLetters) {
 //Actual gameplay
 $turnCounter = 0;
 for ($turnNum=0; $turnNum<NUM_TURNS; $turnNum++) {
+    $currentPlayer = $turnCounter;
     $currentPlayerLetters = ${"totalLetters" . $turnCounter};
     $currentPlayerScore = ${"score" . $turnCounter};
+    do_turn($currentPlayer, $currentPlayerLetters);
     if ($turnCounter == (int) $numPlayers-1) {
         $turnCounter = 0;
     }
@@ -168,9 +174,11 @@ for ($turnNum=0; $turnNum<NUM_TURNS; $turnNum++) {
                     <div class="single-letter"><?php echo $singleLetter ?></div>
             <?php endforeach; ?>
         </div>
-    <div class="button">
-        <button type="button" name="dice-button">Roll Dice</button>
-    </div>
+    <form method="POST">
+        <div class="button">
+            <button type="button" name="dice-button">Roll Dice</button>
+        </div>
+    </form>
     </div>
     </div>
 
