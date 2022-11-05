@@ -28,11 +28,11 @@
             <form id="player-form" method="POST" action="../SEC-Game/gameplay2.php">
                 <input type="radio" class="player-form-button" name="numPlayers" value="Single Player">
                 <label for="Single Player" class="player-form-label">Single Player</label>
-                <input type="radio" class="player-form-button" name="numPlayers" value="2 Players">
+                <input type="radio" class="player-form-button" name="numPlayers" value=2>
                 <label for="2 Players" class="player-form-label">2 Players</label>
-                <input type="radio" class="player-form-button" name="numPlayers" value="3 Players">
+                <input type="radio" class="player-form-button" name="numPlayers" value=3>
                 <label for="3 Players" class="player-form-label">3 Players</label>
-                <input type="radio" class="player-form-button" name="numPlayers" value="4 Players">
+                <input type="radio" class="player-form-button" name="numPlayers" value=4>
                 <label for="4 Players" class="player-form-label">4 Players</label>
                 <input type="submit">
             </form>

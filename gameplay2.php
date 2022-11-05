@@ -83,8 +83,9 @@
 
 <?php 
 $numPlayers = $_POST['numPlayers'];
+$test = 3;
 define("NUM_TURNS", (int) $numPlayers*10);
-
+echo "<script>console.log($numPlayers)</script>";
 //Generate variables according to number of players
 for ($i=0; $i<$numPlayers; $i++) {
     $playerArray[] = ("Player " . (string) $i+1);
@@ -119,7 +120,7 @@ $currentPlayer = 0;
 for ($turnNum=0; $turnNum<NUM_TURNS; $turnNum++) {
     $currentPlayerLetters = ${"totalLetters" . $currentPlayer};
     $currentPlayerScore = ${"score" . $currentPlayer};
-    do_turn($currentPlayer, $currentPlayerLetters, $currentPlayerScore);
+    //do_turn($currentPlayer, $currentPlayerLetters, $currentPlayerScore);
     if ($currentPlayer == (int) $numPlayers-1) {
         $currentPlayer = 0;
     }
