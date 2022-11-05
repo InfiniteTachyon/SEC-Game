@@ -70,7 +70,16 @@ input:checked + label{
 }
 
 .scoreboard {
-    color: black;
+    vertical-align: center;
+    height: fit-content;
+    width: fit-content;
+    padding: 5px 10px;
+    border: 4px solid grey;
+    border-radius: 5px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .letter-display {
