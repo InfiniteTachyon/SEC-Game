@@ -59,7 +59,9 @@ form {
 
 
 input:checked + label{
-    color: blue;
+    padding: 5px 5px;
+    border: 2px solid salmon;
+    border-radius: 15px;
 }
 
 .turn-text {
@@ -74,4 +76,12 @@ input:checked + label{
 .letter-display {
     border-color: 2px solid black;
 }
+
+
+.form-field input[type="text"] {
+    padding: 10px;
+    border: 2px solid salmon;
+    border-radius: 20px;
+}
+
 
