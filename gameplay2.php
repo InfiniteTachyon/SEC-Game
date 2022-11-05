@@ -7,6 +7,7 @@ define("NUM_TURNS", (int) $numPlayers*10);
 for ($i=0; $i<$numPlayers; $i++) {
     $playerArray[] = ("Player " . (string) $i+1);
     ${"score" . $i} = 0;
+    ${"totalLetters" . (string) $i} = [];
 }
 
 function roll_dice() {
@@ -23,7 +24,10 @@ function get_letters($numLetters) {
     return $letterArray();
 } 
 
-function do_turn($player) {
+function do_turn($player, $currentLetters) {
+    $numLetters = roll_dice();
+    $newLetters = get_letters($numLetters);
+    ${"totalLetters" . $player} = array_merge($currentLetters, $newLetters);
 }
 
 //Keep track of turns
@@ -63,6 +67,13 @@ for ($turnNum=0; $turnNum<NUM_TURNS; $turnNum++) {
             echo '<ul class="score-line">' . $playerName . ": " . ${"score" . $num} . "</ul>";
             ?>
         </div>
+    <div class="container">
+        <div class="letter-display">
+            <?php foreach($totalLetters as $singleLetter): ?>
+                    <div class="single-letter"><?php echo $singleLetter ?></div>
+            <?php endforeach; ?>
+        </div>
+    </div>
     </div>
 
     
