@@ -93,7 +93,7 @@ for ($i=0; $i<$numPlayers; $i++) {
 }
 
 function roll_dice() {
-    $roll = rand(1,6);
+    $roll = rand(1,12);
     return $roll;
 }
 
@@ -115,8 +115,14 @@ function do_turn($player, $currentLetters) {
 //Actual gameplay
 $turnCounter = 0;
 for ($turnNum=0; $turnNum<NUM_TURNS; $turnNum++) {
-    do_turn($turnCounter, ${"totalLetters" . (string) $turnCounter});
-
+    $currentPlayerLetters = ${"totalLetters" . $turnCounter};
+    $currentPlayerScore = ${"score" . $turnCounter};
+    if ($turnCounter == (int) $numPlayers-1) {
+        $turnCounter = 0;
+    }
+    else {
+        $turnCounter += 1;
+    }
 }
 
 ?>
@@ -162,6 +168,9 @@ for ($turnNum=0; $turnNum<NUM_TURNS; $turnNum++) {
                     <div class="single-letter"><?php echo $singleLetter ?></div>
             <?php endforeach; ?>
         </div>
+    <div class="button">
+        <button type="button" name="dice-button">Roll Dice</button>
+    </div>
     </div>
     </div>
 
