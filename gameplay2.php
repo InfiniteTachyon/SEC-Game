@@ -107,11 +107,11 @@ function get_letters($numLetters) {
     }
     return $letterArray;
 } 
-
-function do_turn($currentPlayer, $currentPlayerLetters, $currentPlayerScore) {
     if (isset($_POST['dice-button'])) {
         $numLetters = roll_dice();
     }
+function do_turn($currentPlayer, $currentPlayerLetters, $currentPlayerScore) {
+
     ${"totalLetters" . $player} = array_merge($currentLetters, get_letters($numLetters));
     $currentPlayerLetters = ${"totalLetters" . $player};
 }
@@ -175,7 +175,7 @@ for ($turnNum=0; $turnNum<NUM_TURNS; $turnNum++) {
         </div>
     <form method="POST">
         <div class="button">
-            <button type="button" name="dice-button">Roll Dice</button>
+            <button type="submit" name="dice-button">Roll Dice</button>
         </div>
     </form>
     </div>
