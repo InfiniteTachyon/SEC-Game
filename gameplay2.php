@@ -92,10 +92,7 @@ for ($i=0; $i<$numPlayers; $i++) {
     ${"totalLetters" . (string) $i} = [];
 }
 
-if (isset($_POST['dice-button'])) {
-    roll_dice();
-    echo "<script>console.log('Hello worlds')</script>";
-}
+
 
 function roll_dice() {
     $roll = rand(1,12);
@@ -111,24 +108,25 @@ function get_letters($numLetters) {
     return $letterArray;
 } 
 
-function do_turn($player, $currentLetters) {
-    $numLetters = roll_dice();
+function do_turn($currentPlayer, $currentPlayerLetters, $currentPlayerScore) {
+    if (isset($_POST['dice-button'])) {
+        $numLetters = roll_dice();
+    }
     ${"totalLetters" . $player} = array_merge($currentLetters, get_letters($numLetters));
     $currentPlayerLetters = ${"totalLetters" . $player};
 }
 
 //Actual gameplay
-$turnCounter = 0;
+$currentPlayer = 0;
 for ($turnNum=0; $turnNum<NUM_TURNS; $turnNum++) {
-    $currentPlayer = $turnCounter;
-    $currentPlayerLetters = ${"totalLetters" . $turnCounter};
-    $currentPlayerScore = ${"score" . $turnCounter};
-    do_turn($currentPlayer, $currentPlayerLetters);
-    if ($turnCounter == (int) $numPlayers-1) {
-        $turnCounter = 0;
+    $currentPlayerLetters = ${"totalLetters" . $currentPlayer};
+    $currentPlayerScore = ${"score" . $currentPlayer};
+    do_turn($currentPlayer, $currentPlayerLetters, $currentPlayerScore);
+    if ($currentPlayer == (int) $numPlayers-1) {
+        $currentPlayer = 0;
     }
     else {
-        $turnCounter += 1;
+        $currentPlayer += 1;
     }
 }
 
