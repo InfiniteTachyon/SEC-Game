@@ -83,6 +83,7 @@
 
 <?php 
 $numPlayers = $_POST['numPlayers'];
+$test = 3;
 define("NUM_TURNS", (int) $numPlayers*10);
 define("LETTERS", (int) $numPlayers*10);
 
@@ -103,14 +104,12 @@ function get_letters($numLetters) {
     }
     return $letterArray;
 } 
-
-function do_turn($currentPlayer, $currentPlayerLetters, $currentPlayerScore) {
     if (isset($_POST['dice-button'])) {
         $numLetters = roll_dice();
         $currentPlayerLetters = array_merge($currentPlayerLetters, get_letters($numLetters));
     }
     
-}
+
 
 //Actual gameplay
 $currentPlayer = 0;
